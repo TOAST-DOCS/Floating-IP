@@ -1,4 +1,4 @@
-## Network > Floating IP > 콘솔 사용 가이드
+## Network > Floating IP > 개요
 
 본 문서에서는 콘솔에서 플로팅 IP를 다룰 때 필요한 내용을 기술합니다.
 
