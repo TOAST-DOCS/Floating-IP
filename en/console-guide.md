@@ -17,7 +17,7 @@ A floating IP can be connected or disconnected regardless of the instance status
 
 The instance with multiple network interfaces can have a floating IP connected for each network interface. However, in order to access the instance with the floating IP connected to the rest of the network interfaces except for the first one, the routing rule must be established for that instance.
 
-**TOAST에서 제공하는 공용 Linux 이미지 배포 버전 `2018.12.27` 이상**으로 생성한 인스턴스는 부팅 시 Routing Rule을 자동으로 설정하여 각각의 네트워크 인터페이스에 연결된 모든 플로팅 IP를 통해 접근이 가능합니다. 
+**An instance created with the public Linux image deployment version `2018.12.27` or higher** automatically sets the routing rule upon booting, so it is accessible by all floating IPs that are connected to each network interface.
 
 After accessing the instance, you can see whether the routing rule has been set as follows:
 ```
