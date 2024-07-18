@@ -139,7 +139,7 @@ X-Auth-Token: {tokenId}
 |---|---|---|---|---|
 | tokenId | Header | String | O | 토큰 ID |
 | floatingip | Body | Object | O | 플로팅 IP 생성 요청 객체 |
-| floatingip.floating_network_id | Body | UUID | O | 플로팅 IP가 속한 외부 네트워크 ID |
+| floatingip.floating_network_id | Body | UUID | O | 플로팅 IP가 속한 외부 네트워크 ID(Public Network의 VPC ID와 동일) |
 | floatingip.port_id | Body | UUID | - | 플로팅 IP가 연결될 포트 ID |
 
 <details><summary>예시</summary>
