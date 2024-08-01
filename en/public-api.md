@@ -6,7 +6,7 @@ Floating IP API uses the `network`-type endpoint. To see the exact endpoint, ref
 
 | Type | Region | Endpoint |
 |---|---|---|
-| network | Korea(Pangyo) Region<br>Korea(Pyeongchon) Region<br>Japan Region<br>USA Region | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com |
+| network | Korea(Pangyo) Region<br>Korea(Pyeongchon) Region<br>Japan (Toky) Region<br>USA (California) Region | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com](https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com) |
 
 API response may show the fields not specified by the guide. These fields are internally used by NHN Cloud, and not used because they are subject to change without prior notice.
 
@@ -139,7 +139,7 @@ X-Auth-Token: {tokenId}
 |---|---|---|---|---|
 | tokenId | Header | String | O | Token ID |
 | floatingip | Body | Object | O | Object requesting creation of floating IP |
-| floatingip.floating_network_id | Body | UUID | O | External network ID which includes the floating IP |
+| floatingip.floating_network_id | Body | UUID | O | External network ID which includes the floating IP (same as the VPC ID of 'Public Network') |
 | floatingip.port_id | Body | UUID | - | Port ID to connect the floating IP |
 
 <details><summary>Example</summary>
