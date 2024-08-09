@@ -6,7 +6,7 @@ Floating IP APIは`network`タイプのエンドポイントを利用します�
 
 | タイプ | リージョン | エンドポイント |
 |---|---|---|
-| network | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本リージョン<br>米国リージョン | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com |
+| network | 韓国(パンギョ)リージョン<br>韓国(ピョンチョン)リージョン<br>日本(東京)リージョン<br>米国(カリフォルニア)リージョン | https://kr1-api-network-infrastructure.nhncloudservice.com<br>https://kr2-api-network-infrastructure.nhncloudservice.com<br>https://jp1-api-network-infrastructure.nhncloudservice.com<br>https://us1-api-network-infrastructure.nhncloudservice.com |
 
 APIレスポンスにガイドに明示されていないフィールドが現れることがあります。これらのフィールドはTOAST内部用途で使用され、事前の告知なしに変更されることがあるため使用しません。
 
@@ -139,7 +139,7 @@ X-Auth-Token: {tokenId}
 |---|---|---|---|---|
 | tokenId | Header | String | O | トークンID |
 | floatingip | Body | Object | O | Floating IP作成リクエストオブジェクト |
-| floatingip.floating_network_id | Body | UUID | O | Floating IPが属す外部ネットワークID |
+| floatingip.floating_network_id | Body | UUID | O | Floating IPが属する外部ネットワークID('Public Network'のVPC IDと同じ) |
 | floatingip.port_id | Body | UUID | - | Floating IPが接続されるポートID |
 
 <details><summary>例</summary>
