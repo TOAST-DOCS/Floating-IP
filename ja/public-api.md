@@ -11,6 +11,14 @@ Floating IP APIは`network`タイプのエンドポイントを利用します�
 APIレスポンスにガイドに明示されていないフィールドが現れることがあります。これらのフィールドはTOAST内部用途で使用され、事前の告知なしに変更されることがあるため使用しません。
 
 ## Floating IP
+
+### 外部ネットワークIDを照会する
+Floating IPは外部ネットワークでIPを割り当てるため、Floating IPを作成する際は外部ネットワークのIDを指定する必要があります。
+使用可能な外部ネットワークは、[VPCリスト表示API](/Network/VPC/ko/public-api/#vpc_1)に`router:external=true`クエリを指定して照会できます。
+```
+GET /v2.0/vpcs?router:external=true
+```
+
 ### Floating IPリストを表示
 Floating IPリストを返します。
 ```
@@ -139,7 +147,7 @@ X-Auth-Token: {tokenId}
 |---|---|---|---|---|
 | tokenId | Header | String | O | トークンID |
 | floatingip | Body | Object | O | Floating IP作成リクエストオブジェクト |
-| floatingip.floating_network_id | Body | UUID | O | Floating IPが属する外部ネットワークID('Public Network'のVPC IDと同じ) |
+| floatingip.floating_network_id | Body | UUID | O | Floating IPが属する外部ネットワークID |
 | floatingip.port_id | Body | UUID | - | Floating IPが接続されるポートID |
 
 <details><summary>例</summary>
