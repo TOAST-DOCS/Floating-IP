@@ -11,6 +11,14 @@ Floating IP API uses the `network`-type endpoint. To see the exact endpoint, ref
 API response may show the fields not specified by the guide. These fields are internally used by NHN Cloud, and not used because they are subject to change without prior notice.
 
 ## Floating IP
+
+### View External Network ID
+You must specify the ID of an external network when creating a floating IP, because the external network assigns floating IPs.
+The available external networks can be retrieved by specifying the query `router:external=true` in the [View VPC List](/Network/VPC/en/public-api/#vpc_1).
+```
+GET /v2.0/vpcs?router:external=true
+```
+
 ### View the list of floating IPs
 Returns the list of floating IPs.
 ```
