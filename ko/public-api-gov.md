@@ -162,7 +162,7 @@ X-Auth-Token: {tokenId}
 | floatingip.floating_network_id | Body | UUID | O | 플로팅 IP가 속한 외부 네트워크 ID |
 | floatingip.port_id | Body | UUID | - | 플로팅 IP가 연결될 포트 ID |
 | floatingip.delete_protection | Body | Boolean | - | 삭제 보호 설정 여부. 기본값 **false** |
-| floatingip.label | Body | String | 레이블 |
+| floatingip.label | Body | String | - | 레이블 |
 
 <details><summary>예시</summary>
 <p>
