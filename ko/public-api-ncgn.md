@@ -43,7 +43,7 @@ X-Auth-Token: {tokenId}
 | label | Query | String | - | 레이블 |
 | sort_dir | Query | Enum | - | 조회할 플로팅 IP의 정렬 방향<br>`sort_key`에서 지정한 필드를 기준으로 정렬<br>**asc**, **desc** 중 하나 |
 | sort_key | Query | String | - | 조회할 플로팅 IP의 정렬 키<br>`sort_dir`에서 지정한 방향대로 정렬 |
-| fields | Query | String | - | 조회할 플로팅 IP의 필드 이름<br>예) `fields=id&fields=name` |
+| fields | Query | String | - | 조회할 플로팅 IP의 필드 이름<br>예: `fields=id&fields=name` |
 
 #### 응답
 
