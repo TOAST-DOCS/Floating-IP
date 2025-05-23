@@ -41,9 +41,11 @@ X-Auth-Token: {tokenId}
 | fixed_ip_address | Query | String | - | 조회할 플로팅 IP가 연결된 고정 IP 주소 |
 | floating_ip_address | Query | String | - | 조회할 플로팅 IP 주소 |
 | port_id | Query | UUID | - | 조회할 플로팅 IP가 연결된 포트 ID |
+| delete_protection | Query | Boolean | - | 삭제 보호 설정 여부 | 
+| label | Query | String | - | 레이블 |
 | sort_dir | Query | Enum | - | 조회할 플로팅 IP의 정렬 방향<br>`sort_key`에서 지정한 필드를 기준으로 정렬<br>**asc**, **desc** 중 하나 |
 | sort_key | Query | String | - | 조회할 플로팅 IP의 정렬 키<br>`sort_dir`에서 지정한 방향대로 정렬 |
-| fields | Query | String | - | 조회할 플로팅 IP의 필드 이름<br>예) `fields=id&fields=name` |
+| fields | Query | String | - | 조회할 플로팅 IP의 필드 이름<br>예: `fields=id&fields=name` |
 
 #### 응답
 
@@ -58,6 +60,8 @@ X-Auth-Token: {tokenId}
 | floatingips.status | Body | Enum | 플로팅 IP의 상태<br>**ACTIVE**: 인스턴스에 연결<br>**DOWN**: 인스턴스에 미연결<br>**ERROR**: 인스턴스에 연결 또는 할당 실패 |
 | floatingips.port_id | Body | UUID | 플로팅 IP가 연결된 포트 ID |
 | floatingips.id | Body | UUID | 플로팅 IP ID |
+| floatingips.delete_protection | Body | Boolean | 삭제 보호 설정 여부 |
+| floatingips.label | Body | String | 레이블 |
 
 <details><summary>예시</summary>
 <p>
@@ -73,7 +77,9 @@ X-Auth-Token: {tokenId}
       "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
       "status": "DOWN",
       "port_id": null,
-      "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+      "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+      "delete_protection": True,
+      "label": "LABEL"
     }
   ]
 }
@@ -112,6 +118,8 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | 플로팅 IP의 상태<br>**ACTIVE**: 인스턴스에 연결<br>**DOWN**: 인스턴스에 미연결<br>**ERROR**: 인스턴스에 연결 또는 할당 실패 |
 | floatingip.port_id | Body | UUID | 플로팅 IP가 연결된 포트 ID |
 | floatingip.id | Body | UUID | 플로팅 IP ID |
+| floatingip.delete_protection | Body | Boolean | 삭제 보호 설정 여부 |
+| floatingip.label | Body | String | 레이블 |
 
 <details><summary>예시</summary>
 <p>
@@ -126,7 +134,9 @@ X-Auth-Token: {tokenId}
     "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
     "status": "DOWN",
     "port_id": null,
-    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+    "delete_protection": True,
+    "label": "LABEL"
   }
 }
 ```
@@ -151,6 +161,8 @@ X-Auth-Token: {tokenId}
 | floatingip | Body | Object | O | 플로팅 IP 생성 요청 객체 |
 | floatingip.floating_network_id | Body | UUID | O | 플로팅 IP가 속한 외부 네트워크 ID |
 | floatingip.port_id | Body | UUID | - | 플로팅 IP가 연결될 포트 ID |
+| floatingip.delete_protection | Body | Boolean | - | 삭제 보호 설정 여부. 기본값 **false** |
+| floatingip.label | Body | String | - | 레이블 |
 
 <details><summary>예시</summary>
 <p>
@@ -180,6 +192,9 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | 플로팅 IP의 상태<br>**ACTIVE**: 인스턴스에 연결<br>**DOWN**: 인스턴스에 미연결<br>**ERROR**: 인스턴스에 연결 또는 할당 실패 |
 | floatingip.port_id | Body | UUID | 플로팅 IP가 연결된 포트 ID |
 | floatingip.id | Body | UUID | 플로팅 IP ID |
+| floatingip.delete_protection | Body | Boolean | 삭제 보호 설정 여부 |
+| floatingip.label | Body | String | 레이블 |
+
 
 <details><summary>예시</summary>
 <p>
@@ -194,7 +209,80 @@ X-Auth-Token: {tokenId}
     "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
     "status": "DOWN",
     "port_id": null,
-    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+    "delete_protection": True,
+    "label": "LABEL"
+  }
+}
+```
+
+</p>
+</details>
+
+---
+
+### 플로팅 IP 변경하기
+```
+PUT /v2.0/floatingips/{floatingIpId}
+X-Auth-Token: {tokenId}
+```
+
+#### 요청
+| 이름 | 종류 | 형식 | 필수 | 설명 |
+|---|---|---|---|---|
+| floatingIpId | URL | UUID | 플로팅 IP ID |
+| tokenId | Header | String | O | 토큰 ID |
+| floatingip | Body | Object | O | 플로팅 IP 수정 요청 객체 |
+| floatingip.delete_protection | Body | Boolean | - | 삭제 보호 설정 여부 |
+| floatingip.label | Body | String | - | 레이블 |
+
+<details><summary>예시</summary>
+<p>
+
+```json
+{
+    "floatingip": {
+        "delete_protection": true,
+        "label": "LABEL"
+    }
+}
+```
+
+</p>
+</details>
+
+#### 응답
+
+| 이름 | 종류 | 형식 | 설명 |
+|---|---|---|---|
+| floatingip | Body | Object | 플로팅 IP 정보 객체 |
+| floatingip.floating_network_id | Body | UUID | 플로팅 IP가 속한 외부 네트워크 ID |
+| floatingip.router_id | Body | UUID | 플로팅 IP가 연결된 라우터 ID |
+| floatingip.fixed_ip_address | Body | String | 플로팅 IP가 연결된 고정 IP 주소 |
+| floatingip.floating_ip_address | Body | String | 플로팅 IP 주소 |
+| floatingip.tenant_id | Body | String | 테넌트 ID |
+| floatingip.status | Body | Enum | 플로팅 IP의 상태 |
+| floatingip.port_id | Body | UUID | 플로팅 IP가 연결된 포트 ID |
+| floatingip.id | Body | UUID | 플로팅 IP ID |
+| floatingip.delete_protection | Body | Boolean | 삭제 보호 설정 여부 |
+| floatingip.label | Body | String | 레이블 |
+
+<details><summary>예시</summary>
+<p>
+
+```json
+{
+  "floatingip": {
+    "floating_network_id": "b04b1c31-f2e9-4ae0-a264-02b7d61ad618",
+    "router_id": "4337119f-8c72-40bf-818a-21258ecb86db",
+    "fixed_ip_address": "192.168.22.96",
+    "floating_ip_address": "133.186.147.40",
+    "tenant_id": "f5073eaa26b64cffbee89411df94ce01",
+    "status": "DOWN",
+    "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
+    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
+    "delete_protection": True,
+    "label": "LABEL"
   }
 }
 ```
@@ -247,6 +335,8 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | 플로팅 IP의 상태 |
 | floatingip.port_id | Body | UUID | 플로팅 IP가 연결된 포트 ID |
 | floatingip.id | Body | UUID | 플로팅 IP ID |
+| floatingip.delete_protection | Body | Boolean | 삭제 보호 설정 여부 |
+| floatingip.label | Body | String | 레이블 |
 
 <details><summary>예시</summary>
 <p>
@@ -261,7 +351,9 @@ X-Auth-Token: {tokenId}
     "tenant_id": "f5073eaa26b64cffbee89411df94ce01",
     "status": "DOWN",
     "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
-    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a"
+    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
+    "delete_protection": True,
+    "label": "LABEL"
   }
 }
 ```
