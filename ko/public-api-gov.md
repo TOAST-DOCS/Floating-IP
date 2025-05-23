@@ -78,7 +78,7 @@ X-Auth-Token: {tokenId}
       "status": "DOWN",
       "port_id": null,
       "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
-      "delete_protection": True,
+      "delete_protection": true,
       "label": "LABEL"
     }
   ]
@@ -135,7 +135,7 @@ X-Auth-Token: {tokenId}
     "status": "DOWN",
     "port_id": null,
     "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
-    "delete_protection": True,
+    "delete_protection": true,
     "label": "LABEL"
   }
 }
@@ -210,7 +210,7 @@ X-Auth-Token: {tokenId}
     "status": "DOWN",
     "port_id": null,
     "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
-    "delete_protection": True,
+    "delete_protection": true,
     "label": "LABEL"
   }
 }
@@ -281,7 +281,7 @@ X-Auth-Token: {tokenId}
     "status": "DOWN",
     "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
     "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
-    "delete_protection": True,
+    "delete_protection": true,
     "label": "LABEL"
   }
 }
@@ -352,7 +352,7 @@ X-Auth-Token: {tokenId}
     "status": "DOWN",
     "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
     "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
-    "delete_protection": True,
+    "delete_protection": true,
     "label": "LABEL"
   }
 }
