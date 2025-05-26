@@ -39,9 +39,11 @@ X-Auth-Token: {tokenId}
 | fixed_ip_address | Query | String | - | 照会するFloating IPが接続された固定IPアドレス |
 | floating_ip_address | Query | String | - | 照会するFloating IPアドレス |
 | port_id | Query | UUID | - | 照会するFloating IPが接続されたポートID |
+| delete_protection | Query | Boolean | - | 削除保護設定の有無 | 
+| label | Query | String | - | ラベル |
 | sort_dir | Query | Enum | - | 照会するFloating IPのソート方向<br>`sort_key`で指定したフィールドを基準にソート<br>**asc**、**desc**のいずれか |
 | sort_key | Query | String | - | 照会するFloating IPのソートキー<br>`sort_dir`で指定した方向で ソート |
-| fields | Query | String | - | 照会するFloating IPのフィールド名<br>例) `fields=id&fields=name` |
+| fields | Query | String | - | 照会するFloating IPのフィールド名<br>例: `fields=id&fields=name` |
 
 #### レスポンス
 
@@ -56,6 +58,8 @@ X-Auth-Token: {tokenId}
 | floatingips.status | Body | Enum | Floating IPの状態<br>**ACTIVE**：インスタンスに接続<br>**DOWN**：インスタンスに未接続<br>**ERROR**：インスタンスに接続または割り当て失敗 |
 | floatingips.port_id | Body | UUID | Floating IPが接続されたポートID |
 | floatingips.id | Body | UUID | Floating IP ID |
+| floatingips.delete_protection | Body | Boolean | 削除保護設定の有無 |
+| floatingips.label | Body | String | ラベル |
 
 <details><summary>例</summary>
 <p>
@@ -71,7 +75,9 @@ X-Auth-Token: {tokenId}
       "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
       "status": "DOWN",
       "port_id": null,
-      "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+      "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+      "delete_protection": true,
+      "label": "LABEL"
     }
   ]
 }
@@ -110,6 +116,8 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | Floating IPの状態<br>**ACTIVE**：インスタンスに接続<br>**DOWN**：インスタンスに未接続<br>**ERROR**：インスタンスに接続または割り当て失敗 |
 | floatingip.port_id | Body | UUID | Floating IPが接続されたポートID |
 | floatingip.id | Body | UUID | Floating IP ID |
+| floatingip.delete_protection | Body | Boolean | 削除保護設定の有無 |
+| floatingip.label | Body | String | ラベル |
 
 <details><summary>例</summary>
 <p>
@@ -124,7 +132,9 @@ X-Auth-Token: {tokenId}
     "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
     "status": "DOWN",
     "port_id": null,
-    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+    "delete_protection": true,
+    "label": "LABEL"
   }
 }
 ```
@@ -149,6 +159,8 @@ X-Auth-Token: {tokenId}
 | floatingip | Body | Object | O | Floating IP作成リクエストオブジェクト |
 | floatingip.floating_network_id | Body | UUID | O | Floating IPが属する外部ネットワークID |
 | floatingip.port_id | Body | UUID | - | Floating IPが接続されるポートID |
+| floatingip.delete_protection | Body | Boolean | - | 削除保護設定の有無. デフォルト値 **false** |
+| floatingip.label | Body | String | - | ラベル |
 
 <details><summary>例</summary>
 <p>
@@ -161,7 +173,6 @@ X-Auth-Token: {tokenId}
   }
 }
 ```
-
 </p>
 </details>
 
@@ -178,6 +189,8 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | Floating IPの状態<br>**ACTIVE**：インスタンスに接続<br>**DOWN**：インスタンスに未接続<br>**ERROR**：インスタンスに接続または割り当て失敗 |
 | floatingip.port_id | Body | UUID | Floating IPが接続されたポートID |
 | floatingip.id | Body | UUID | Floating IP ID |
+| floatingip.delete_protection | Body | Boolean | 削除保護設定の有無 |
+| floatingip.label | Body | String | ラベル |
 
 <details><summary>例</summary>
 <p>
@@ -192,7 +205,80 @@ X-Auth-Token: {tokenId}
     "tenant_id": "19eeb40d58684543aef29cbb5ebfe8f0",
     "status": "DOWN",
     "port_id": null,
-    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e"
+    "id": "fed3fcf6-59b1-4f43-93e5-23a47cb5452e",
+    "delete_protection": true,
+    "label": "LABEL"
+  }
+}
+```
+
+</p>
+</details>
+
+---
+
+### フローティングIPの変更
+```
+PUT /v2.0/floatingips/{floatingIpId}
+X-Auth-Token: {tokenId}
+```
+
+#### リクエスト
+| 名前 | 種類 | 形式 | 必須 | 説明 |
+|---|---|---|---|---|
+| floatingIpId | URL | UUID | フローティングIP ID |
+| tokenId | Header | String | O | トークンID |
+| floatingip | Body | Object | O | フローティングIP修正リクエストオブジェクト |
+| floatingip.delete_protection | Body | Boolean | - | 削除保護設定の有無 |
+| floatingip.label | Body | String | - | ラベル |
+
+<details><summary>例</summary>
+<p>
+
+```json
+{
+    "floatingip": {
+        "delete_protection": true,
+        "label": "LABEL"
+    }
+}
+```
+
+</p>
+</details>
+
+#### レスポンス
+
+| 名前 | 種類 | 形式 | 説明 |
+|---|---|---|---|
+| floatingip | Body | Object | フローティングIP情報オブジェクト |
+| floatingip.floating_network_id | Body | UUID | フローティングIPが属する外部ネットワークID |
+| floatingip.router_id | Body | UUID | フローティングIPが接続されたルーターID |
+| floatingip.fixed_ip_address | Body | String | フローティングIPが接続された固定IPアドレス |
+| floatingip.floating_ip_address | Body | String | フローティングIPアドレス |
+| floatingip.tenant_id | Body | String | テナントID |
+| floatingip.status | Body | Enum | フローティングIPの状態 |
+| floatingip.port_id | Body | UUID | フローティングIPが接続されたポートID |
+| floatingip.id | Body | UUID | フローティングIP ID |
+| floatingip.delete_protection | Body | Boolean | 削除保護設定の有無 |
+| floatingip.label | Body | String | ラベル |
+
+<details><summary>例</summary>
+<p>
+
+```json
+{
+  "floatingip": {
+    "floating_network_id": "b04b1c31-f2e9-4ae0-a264-02b7d61ad618",
+    "router_id": "4337119f-8c72-40bf-818a-21258ecb86db",
+    "fixed_ip_address": "192.168.22.96",
+    "floating_ip_address": "133.186.147.40",
+    "tenant_id": "f5073eaa26b64cffbee89411df94ce01",
+    "status": "DOWN",
+    "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
+    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
+    "delete_protection": true,
+    "label": "LABEL"
   }
 }
 ```
@@ -245,6 +331,8 @@ X-Auth-Token: {tokenId}
 | floatingip.status | Body | Enum | Floating IPの状態 |
 | floatingip.port_id | Body | UUID | Floating IPが接続されたポートID |
 | floatingip.id | Body | UUID | Floating IP ID |
+| floatingip.delete_protection | Body | Boolean | 削除保護設定の有無 |
+| floatingip.label | Body | String | ラベル |
 
 <details><summary>例</summary>
 <p>
@@ -259,7 +347,9 @@ X-Auth-Token: {tokenId}
     "tenant_id": "f5073eaa26b64cffbee89411df94ce01",
     "status": "DOWN",
     "port_id": "af41e9f7-18ae-43c5-8b7e-7026f792bf3a",
-    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a"
+    "id": "5338b5b2-9d80-46b5-ba13-2fd13f5c498a",
+    "delete_protection": true,
+    "label": "LABEL"
   }
 }
 ```
