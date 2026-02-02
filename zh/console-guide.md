@@ -2,17 +2,21 @@
 
 This document explains about what is required when handling the floating IP in the console.
 
+<a id="floating-ip"></a>
 ## Floating IP
+<a id="create"></a>
 ### Creation
 
 Floating IP can be used by getting an IP assigned from the specified network after selecting an external network. This is called <b>IP pool</b>, and NHN Cloud can select only one "Public Network" as of now. To create a floating IP, click the Create button after selecting the IP pool. You can also create a floating IP in the <b>Instance > Management page</b> or <b>Instance > Floating IP page</b>.
 
+<a id="delete-protection-setting"></a>
 ### Connecting and disconnecting
 
 A floating IP can be connected or disconnected regardless of the instance status. You can select a target instance in the <b>Instance > Management page</b>, and click the <b>Manage floating IP</b> button to connect or disconnect the floating IP. You can also disconnect the floating IP from the <b>Floating IP</b> page.
 
 > [Note] To connect a floating IP to the instance, the subnet containing the instance must be connected to the routing table, <br>and that routing table must be connected to the internet through an internet gateway in order for "connection" action to be carried out.
 
+<a id="label-setting"></a>
 ### Connecting a floating IP to the instance with multiple network interfaces
 
 The instance with multiple network interfaces can have a floating IP connected for each network interface. However, in order to access the instance with the floating IP connected to the rest of the network interfaces except for the first one, the routing rule must be established for that instance.
