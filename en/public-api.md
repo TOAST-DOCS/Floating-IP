@@ -1,6 +1,6 @@
 ## Network > Floating IP > API v2 Guide
 
-Using the API requires API endpoint, token, etc. Please refer to [Getting ready to use API](/Compute/Compute/en/identity-api/) to prepare information required for using the API.
+NHN Cloud Network services use IaaS tokens for authentication and authorization when making API calls. The IaaS token is an authentication token used for NHN Cloud's OpenStack-based infrastructure services (IaaS). For more information on issuing and using IaaS tokens, please refer to the [IaaS Token](/nhncloud/en/public-api/iaas-token).
 
 Floating IP API uses the `network`-type endpoint. To see the exact endpoint, refer to `serviceCatalog` of the token issuance response.
 
