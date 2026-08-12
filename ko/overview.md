@@ -1,4 +1,5 @@
-## Network > Floating IP > 개요
+<a id="network-floating-ip-overview"></a>
+## Network > Floating IP > 개요 { #network-floating-ip-overview }
 
 플로팅 IP는 인터넷에서 인스턴스를 직접 엑세스하기 위해 필요한 기능입니다. 인스턴스와 같은 리소스에 1:1로 연결하여 사용할 수 있습니다.
 

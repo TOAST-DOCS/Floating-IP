@@ -1,37 +1,38 @@
-## Network > Floating IP > Console User Guide
+<a id="network-floating-ip-console-user-guide"></a>
+## Network > Floating IP > Console User Guide { #network-floating-ip-console-user-guide }
 
 This document explains about what is required when handling the floating IP in the console.
 
 <a id="floating-ip"></a>
-## Floating IP
+## Floating IP { #floating-ip }
 <a id="create"></a>
-### Creation
+### Creation { #create }
 
 Floating IP can be used by getting an IP assigned from the specified network after selecting an external network. This is called <b>IP pool</b>, and NHN Cloud can select only one "Public Network" as of now. To create a floating IP, click the Create button after selecting the IP pool. You can also create a floating IP in the <b>Instance > Management page</b> or <b>Instance > Floating IP page</b>.
 
 <a id="delete-protection-setting"></a>
-### Delete Protection Settings
+### Delete Protection Settings { #delete-protection-setting }
 You can set the delete protection to prevent accidental deletion of floating IPs.
 
 <a id="label-setting"></a>
-### Label Settings
+### Label Settings { #label-setting }
 Label is the optional string to identify floating IPs. It can be used to a variety of purposes, such as distinguishing usage or identifying the owner.
 Certain services may reference or auto-associate with floating IPs based on label values, which may require you to specify predefined values. In this case, be careful when changing the label value, as it may affect the operation or integration status of that service.
 Labels can only contain alphanumeric and you can enter a maximum of 64 characters.
 
 <a id="connect-and-disconnect"></a>
-### Connecting and disconnecting
+### Connecting and disconnecting { #connect-and-disconnect }
 
 A floating IP can be connected or disconnected regardless of the instance status. You can select a target instance in the <b>Instance > Management page</b>, and click the <b>Manage floating IP</b> button to connect or disconnect the floating IP. You can also disconnect the floating IP from the <b>Floating IP</b> page.
 
 > [Note] To connect a floating IP to the instance, the subnet containing the instance must be connected to the routing table, <br>and that routing table must be connected to the internet through an internet gateway in order for "connection" action to be carried out.
 
 <a id="delete"></a>
-### Deletion
+### Deletion { #delete }
 Delete the selected floating IP. However, deletion is restricted if it is protected or connected to a device. Disable the delete protection or detach the connection first.
 
 <a id="connect-multi-nic-instance"></a>
-### Connecting a floating IP to the instance with multiple network interfaces
+### Connecting a floating IP to the instance with multiple network interfaces { #connect-multi-nic-instance }
 
 The instance with multiple network interfaces can have a floating IP connected for each network interface. However, in order to access the instance with the floating IP connected to the rest of the network interfaces except for the first one, the routing rule must be established for that instance.
 
