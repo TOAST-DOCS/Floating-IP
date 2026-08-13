@@ -1,4 +1,7 @@
-## Network > Floating IP > API v2 Guide
+<!-- pre-align:aligned sig=1afc401bf75b -->
+
+<a id="network-floating-ip-api-v2-guide"></a>
+## Network > Floating IP > API v2 Guide { #network-floating-ip-api-v2-guide }
 
 NHN Cloud Network services use IaaS tokens for authentication and authorization when making API calls. The IaaS token is an authentication token used for NHN Cloud's OpenStack-based infrastructure services (IaaS). For more information on issuing and using IaaS tokens, please refer to the [IaaS Token](/nhncloud/en/public-api/iaas-token).
 
@@ -10,22 +13,26 @@ Floating IP API uses the `network`-type endpoint. To see the exact endpoint, ref
 
 API response may show the fields not specified by the guide. These fields are internally used by NHN Cloud, and not used because they are subject to change without prior notice.
 
-## Floating IP
+<a id="floating-ip"></a>
+## Floating IP { #floating-ip }
 
-### View External Network ID
+<a id="view-external-network-id"></a>
+### View External Network ID { #view-external-network-id }
 You must specify the ID of an external network when creating a floating IP, because the external network assigns floating IPs.
 The available external networks can be retrieved by specifying the query `router:external=true` in the [View VPC List](/Network/VPC/en/public-api/#vpc_1).
 ```
 GET /v2.0/vpcs?router:external=true
 ```
 
-### View the list of floating IPs
+<a id="view-the-list-of-floating-ips"></a>
+### View the list of floating IPs { #view-the-list-of-floating-ips }
 Returns the list of floating IPs.
 ```
 GET /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="view-the-list-of-floating-ips-request"></a>
 #### Request
 This API does not require a request body.
 
@@ -45,6 +52,7 @@ This API does not require a request body.
 | sort_key | Query | String | - | Sort key of the floating IP to view<br>`Sorted in the direction specified by sort_dir` |
 | fields | Query | String | - | Field name of the floating IP to view<br>e.g.) `fields=id&fields=name` |
 
+<a id="view-the-list-of-floating-ips-response"></a>
 #### Response
 
 | Name | Type | Format | Description |
@@ -88,13 +96,15 @@ This API does not require a request body.
 
 ---
 
-### See the floating IP
+<a id="see-the-floating-ip"></a>
+### See the floating IP { #see-the-floating-ip }
 Returns the information about the specified floating IP.
 ```
 GET /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="see-the-floating-ip-request"></a>
 #### Request
 This API does not require a request body.
 
@@ -103,6 +113,7 @@ This API does not require a request body.
 | floatingIpId | URL | UUID | O | Floating IP ID |
 | tokenId | Header | String | O | Token ID |
 
+<a id="see-the-floating-ip-response"></a>
 #### Response
 
 | Name | Type | Format | Description |
@@ -144,13 +155,15 @@ This API does not require a request body.
 
 ---
 
-### Creating a floating IP
+<a id="creating-a-floating-ip"></a>
+### Creating a floating IP { #creating-a-floating-ip }
 Creates a floating IP.
 ```
 POST /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="creating-a-floating-ip-request"></a>
 #### Request
 
 | Name | Type | Format | Required | Description |
@@ -177,6 +190,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="creating-a-floating-ip-response"></a>
 #### Response
 
 | Name | Type | Format | Description |
@@ -219,12 +233,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Change Floating IP
+<a id="change-floating-ip"></a>
+### Change Floating IP { #change-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="change-floating-ip-request"></a>
 #### Request
 | Name | Type | Format | Required | Description |
 |---|---|---|---|---|
@@ -249,6 +265,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="change-floating-ip-response"></a>
 #### Response
 
 | Name | Type | Format | Description |
@@ -290,12 +307,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Connect/disconnect a floating IP
+<a id="connectdisconnect-a-floating-ip"></a>
+### Connect/disconnect a floating IP { #connectdisconnect-a-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="connectdisconnect-a-floating-ip-request"></a>
 #### Request
 
 | Name | Type | Format | Required | Description |
@@ -320,6 +339,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="connectdisconnect-a-floating-ip-response"></a>
 #### Response
 
 | Name | Type | Format | Description |
@@ -361,13 +381,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Deleting a floating IP
+<a id="deleting-a-floating-ip"></a>
+### Deleting a floating IP { #deleting-a-floating-ip }
 Deletes the specified floating IP.
 ```
 DELETE /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="deleting-a-floating-ip-request"></a>
 #### Request
 This API does not require a request body.
 
@@ -376,6 +398,7 @@ This API does not require a request body.
 | floatingIpId | URL | UUID | O | Floating IP ID |
 | tokenId | Header | String | O | Token ID |
 
+<a id="deleting-a-floating-ip-response"></a>
 #### Response
 This API does not return a response body.
 
