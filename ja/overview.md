@@ -1,4 +1,7 @@
-## Network > Floating IP > 概要
+<!-- pre-align:aligned sig=535e46c86b9d -->
+
+<a id="network-floating-ip-overview"></a>
+## Network > Floating IP > 概要 { #network-floating-ip-overview }
 
 Floating IPはインターネットからインスタンスに直接アクセスするために必要な機能です。インスタンスと同じリソースに1:1で接続して使用できます。
 

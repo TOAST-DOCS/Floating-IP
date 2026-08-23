@@ -1,4 +1,7 @@
-## Network > Floating IP > API v2ガイド
+<!-- pre-align:aligned sig=1afc401bf75b -->
+
+<a id="network-floating-ip-api-v2-guide"></a>
+## Network > Floating IP > API v2ガイド { #network-floating-ip-api-v2-guide }
 
 NHN Cloud Networkサービスは、API呼び出し時の認証/認可のためにIaaSトークンを使用します。IaaSトークンは、NHN CloudのOpenStackベースのインフラサービス(IaaS)で使用する認証トークンです。IaaSトークンの発行及び使用に関する詳細は、[IaaSトークン](/nhncloud/ja/public-api/iaas-token)を参照してください。
 
@@ -10,22 +13,26 @@ Floating IP APIは`network`タイプのエンドポイントを利用します�
 
 APIレスポンスにガイドに明示されていないフィールドが現れることがあります。これらのフィールドはTOAST内部用途で使用され、事前の告知なしに変更されることがあるため使用しません。
 
-## Floating IP
+<a id="floating-ip"></a>
+## Floating IP { #floating-ip }
 
-### 外部ネットワークIDを照会する
+<a id="view-external-network-id"></a>
+### 外部ネットワークIDを照会する { #view-external-network-id }
 Floating IPは外部ネットワークでIPを割り当てるため、Floating IPを作成する際は外部ネットワークのIDを指定する必要があります。
 使用可能な外部ネットワークは、[VPCリスト表示API](/Network/VPC/ja/public-api/#vpc_1)に`router:external=true`クエリを指定して照会できます。
 ```
 GET /v2.0/vpcs?router:external=true
 ```
 
-### Floating IPリストを表示
+<a id="view-the-list-of-floating-ips"></a>
+### Floating IPリストを表示 { #view-the-list-of-floating-ips }
 Floating IPリストを返します。
 ```
 GET /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="view-the-list-of-floating-ips-request"></a>
 #### リクエスト
 このAPIはリクエスト本文を要求しません。
 
@@ -45,6 +52,7 @@ X-Auth-Token: {tokenId}
 | sort_key | Query | String | - | 照会するFloating IPのソートキー<br>`sort_dir`で指定した方向で ソート |
 | fields | Query | String | - | 照会するFloating IPのフィールド名<br>例: `fields=id&fields=name` |
 
+<a id="view-the-list-of-floating-ips-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | 形式 | 説明 |
@@ -88,13 +96,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Floating IP表示
+<a id="see-the-floating-ip"></a>
+### Floating IP表示 { #see-the-floating-ip }
 指定したFloating IPの情報を返します。
 ```
 GET /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="see-the-floating-ip-request"></a>
 #### リクエスト
 このAPIはリクエスト本文を要求しません。
 
@@ -103,6 +113,7 @@ X-Auth-Token: {tokenId}
 | floatingIpId | URL | UUID | O | Floating IP ID |
 | tokenId | Header | String | O | トークンID |
 
+<a id="see-the-floating-ip-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | 形式 | 説明 |
@@ -144,13 +155,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Floating IP作成
+<a id="creating-a-floating-ip"></a>
+### Floating IP作成 { #creating-a-floating-ip }
 Floating IPを作成します。
 ```
 POST /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="creating-a-floating-ip-request"></a>
 #### リクエスト
 
 | 名前 | 種類 | 形式 | 必須 | 説明 |
@@ -176,6 +189,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="creating-a-floating-ip-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | 形式 | 説明 |
@@ -217,12 +231,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### フローティングIPの変更
+<a id="change-floating-ip"></a>
+### フローティングIPの変更 { #change-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="change-floating-ip-request"></a>
 #### リクエスト
 | 名前 | 種類 | 形式 | 必須 | 説明 |
 |---|---|---|---|---|
@@ -247,6 +263,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="change-floating-ip-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | 形式 | 説明 |
@@ -288,12 +305,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Floating IP接続/解除
+<a id="connectdisconnect-a-floating-ip"></a>
+### Floating IP接続/解除 { #connectdisconnect-a-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="connectdisconnect-a-floating-ip-request"></a>
 #### リクエスト
 
 | 名前 | 種類 | 形式 | 必須 | 説明 |
@@ -318,6 +337,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="connectdisconnect-a-floating-ip-response"></a>
 #### レスポンス
 
 | 名前 | 種類 | 形式 | 説明 |
@@ -359,13 +379,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### Floating IP削除
+<a id="deleting-a-floating-ip"></a>
+### Floating IP削除 { #deleting-a-floating-ip }
 指定したFloating IPを削除します。
 ```
 DELETE /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="deleting-a-floating-ip-request"></a>
 #### リクエスト
 このAPIはリクエスト本文を要求しません。
 
@@ -374,6 +396,7 @@ X-Auth-Token: {tokenId}
 | floatingIpId | URL | UUID | O | Floating IP ID |
 | tokenId | Header | String | O | トークンID |
 
+<a id="deleting-a-floating-ip-response"></a>
 #### レスポンス
 このAPIはレスポンス本文を返しません。
 

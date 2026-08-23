@@ -1,37 +1,40 @@
-## Network > Floating IP > コンソール使用ガイド
+<!-- pre-align:aligned sig=c47661db7ffd -->
+
+<a id="network-floating-ip-console-user-guide"></a>
+## Network > Floating IP > コンソール使用ガイド { #network-floating-ip-console-user-guide }
 
 この文書ではコンソールでFloating IPを扱う時に必要な内容を記述します。
 
 <a id="floating-ip"></a>
-## Floating IP
+## Floating IP { #floating-ip }
 <a id="create"></a>
-### 作成
+### 作成 { #create }
 
 Floating IPは外部ネットワークを選択して指定されたネットワークからIPを割り当てられて使用できます。これを<b>IPプール</b>と表現し、NHN Cloudは現在"Public Network" 1個のみ選択できます。IPプールを選択した後、作成ボタンをクリックしてFloating IPを作成できます。Floating IPの作成は <b>インスタンス > 管理ページ</b> または <b>インスタンス > Floating IPページ</b>でも行うことができます。
 
 <a id="delete-protection-setting"></a>
-### 削除保護設定
+### 削除保護設定 { #delete-protection-setting }
 削除保護を設定することで、フローティングIPが誤って削除されるのを防ぐことができます。
 
 <a id="label-setting"></a>
-### ラベル設定
+### ラベル設定 { #label-setting }
 ラベルは、フローティングIPを識別するために使用するオプションの文字列で、使用用途の区分や所有者の識別など、様々な目的に活用できます。
 特定のサービスでは、ラベル値を基準にフローティングIPを参照したり、自動連動を行うことができ、そのために事前に定義された値を指定する必要がある場合があります。このような場合、ラベル値を変更すると、当該サービスの動作や連動状態に影響を与える可能性があるため、変更には注意が必要です。
 ラベルは英数字のみ使用でき、最大64文字まで入力可能です。
 
 <a id="connect-and-disconnect"></a>
-### 接続と解除
+### 接続と解除 { #connect-and-disconnect }
 
 インスタンスの状態と関係なくFloating IPを接続または、解除できます。 <b>インスタンス > 管理ページ</b>で対象インスタンスを選択し、<b>Floating IP管理</b> ボタンをクリックしてFloating IPを接続または解除できます。 Floating IPの解除は <b>Floating IP</b> ページでも行うことができます。
 
 > [参考]インスタンスにFloating IPを接続するにはインスタンスが含まれるサブネットがルーティングテーブルと接続されていて、<br>該当ルーティングテーブルがインターネットゲートウェイを介してインターネットに接続されている必要があります。
 
 <a id="delete"></a>
-### 削除
+### 削除 { #delete }
 選択したフローティングIPを削除します。ただし、削除保護が設定されていたり、デバイスに接続されている場合は削除が制限されるため、まず保護を解除するか、接続を解除する必要があります。
 
 <a id="connect-multi-nic-instance"></a>
-### 複数のネットワークインターフェイスを持つインスタンスにFloating IPを接続する
+### 複数のネットワークインターフェイスを持つインスタンスにFloating IPを接続する { #connect-multi-nic-instance }
 
 複数のネットワークインターフェイスを持つインスタンスは、各ネットワークインターフェイスにFloating IPを接続できます。しかし最初を除いた残りのネットワークインターフェイスに接続したFloating IPにインスタンスに接続するにはインスタンスのRouting Rule設定が必要です。
 
