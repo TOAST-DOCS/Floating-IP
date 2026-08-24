@@ -19,7 +19,7 @@ APIレスポンスにガイドに明示されていないフィールドが現�
 <a id="view-external-network-id"></a>
 ### 外部ネットワークIDを照会する { #view-external-network-id }
 Floating IPは外部ネットワークでIPを割り当てるため、Floating IPを作成する際は外部ネットワークのIDを指定する必要があります。
-使用可能な外部ネットワークは、[VPCリスト表示API](/Network/VPC/ja/public-api/#vpc_1)に`router:external=true`クエリを指定して照会できます。
+使用可能な外部ネットワークは、[VPCリスト表示API](/Network/VPC/ja/public-api/#view-vpc-list)に`router:external=true`クエリを指定して照会できます。
 ```
 GET /v2.0/vpcs?router:external=true
 ```
