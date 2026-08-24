@@ -1,4 +1,7 @@
-## Network > Floating IP > API v2 가이드
+<!-- pre-align:aligned sig=1afc401bf75b -->
+
+<a id="network-floating-ip-api-v2-guide"></a>
+## Network > Floating IP > API v2 가이드 { #network-floating-ip-api-v2-guide }
 
 API를 사용하려면 API 엔드포인트와 토큰 등이 필요합니다. [API 사용 준비](/Compute/Compute/ko/identity-api-ncgn/)를 참고하여 API 사용에 필요한 정보를 준비합니다.
 
@@ -10,22 +13,26 @@ API를 사용하려면 API 엔드포인트와 토큰 등이 필요합니다. [AP
 
 API 응답에 가이드에 명시되지 않은 필드가 나타날 수 있습니다. 이런 필드는 NHN Cloud 내부 용도로 사용되며 사전 공지 없이 변경될 수 있으므로 사용하지 않습니다.
 
-## 플로팅 IP
+<a id="floating-ip"></a>
+## 플로팅 IP { #floating-ip }
 
-### 외부 네트워크 ID 조회하기
+<a id="view-external-network-id"></a>
+### 외부 네트워크 ID 조회하기 { #view-external-network-id }
 플로팅 IP는 외부 네트워크에서 IP를 할당하므로, 플로팅 IP를 생성할 때 외부 네트워크의 ID를 지정해야 합니다.
 사용할 수 있는 외부 네트워크는 [VPC 목록 보기 API](/Network/VPC/ko/public-api-ncgn/#vpc_1)에 `router:external=true` 쿼리를 지정하여 조회할 수 있습니다.
 ```
 GET /v2.0/vpcs?router:external=true
 ```
 
-### 플로팅 IP 목록 보기
+<a id="view-the-list-of-floating-ips"></a>
+### 플로팅 IP 목록 보기 { #view-the-list-of-floating-ips }
 플로팅 IP 목록을 반환합니다.
 ```
 GET /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="view-the-list-of-floating-ips-request"></a>
 #### 요청
 이 API는 요청 본문을 요구하지 않습니다.
 
@@ -45,6 +52,7 @@ X-Auth-Token: {tokenId}
 | sort_key | Query | String | - | 조회할 플로팅 IP의 정렬 키<br>`sort_dir`에서 지정한 방향대로 정렬 |
 | fields | Query | String | - | 조회할 플로팅 IP의 필드 이름<br>예: `fields=id&fields=name` |
 
+<a id="view-the-list-of-floating-ips-response"></a>
 #### 응답
 
 | 이름 | 종류 | 형식 | 설명 |
@@ -88,13 +96,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### 플로팅 IP 보기
+<a id="see-the-floating-ip"></a>
+### 플로팅 IP 보기 { #see-the-floating-ip }
 지정한 플로팅 IP에 대한 정보를 반환합니다.
 ```
 GET /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="see-the-floating-ip-request"></a>
 #### 요청
 이 API는 요청 본문을 요구하지 않습니다.
 
@@ -103,6 +113,7 @@ X-Auth-Token: {tokenId}
 | floatingIpId | URL | UUID | O | 플로팅 IP ID |
 | tokenId | Header | String | O | 토큰 ID |
 
+<a id="see-the-floating-ip-response"></a>
 #### 응답
 
 | 이름 | 종류 | 형식 | 설명 |
@@ -144,13 +155,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### 플로팅 IP 생성하기
+<a id="creating-a-floating-ip"></a>
+### 플로팅 IP 생성하기 { #creating-a-floating-ip }
 플로팅 IP를 생성합니다.
 ```
 POST /v2.0/floatingips
 X-Auth-Token: {tokenId}
 ```
 
+<a id="creating-a-floating-ip-request"></a>
 #### 요청
 
 | 이름 | 종류 | 형식 | 필수 | 설명 |
@@ -177,6 +190,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="creating-a-floating-ip-response"></a>
 #### 응답
 
 | 이름 | 종류 | 형식 | 설명 |
@@ -219,12 +233,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### 플로팅 IP 변경하기
+<a id="change-floating-ip"></a>
+### 플로팅 IP 변경하기 { #change-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="change-floating-ip-request"></a>
 #### 요청
 | 이름 | 종류 | 형식 | 필수 | 설명 |
 |---|---|---|---|---|
@@ -249,6 +265,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="change-floating-ip-response"></a>
 #### 응답
 
 | 이름 | 종류 | 형식 | 설명 |
@@ -290,12 +307,14 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### 플로팅 IP 연결/해제하기
+<a id="connectdisconnect-a-floating-ip"></a>
+### 플로팅 IP 연결/해제하기 { #connectdisconnect-a-floating-ip }
 ```
 PUT /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="connectdisconnect-a-floating-ip-request"></a>
 #### 요청
 
 | 이름 | 종류 | 형식 | 필수 | 설명 |
@@ -320,6 +339,7 @@ X-Auth-Token: {tokenId}
 </p>
 </details>
 
+<a id="connectdisconnect-a-floating-ip-response"></a>
 #### 응답
 
 | 이름 | 종류 | 형식 | 설명 |
@@ -361,13 +381,15 @@ X-Auth-Token: {tokenId}
 
 ---
 
-### 플로팅 IP 삭제하기
+<a id="deleting-a-floating-ip"></a>
+### 플로팅 IP 삭제하기 { #deleting-a-floating-ip }
 지정한 플로팅 IP를 삭제합니다.
 ```
 DELETE /v2.0/floatingips/{floatingIpId}
 X-Auth-Token: {tokenId}
 ```
 
+<a id="deleting-a-floating-ip-request"></a>
 #### 요청
 이 API는 요청 본문을 요구하지 않습니다.
 
@@ -376,6 +398,7 @@ X-Auth-Token: {tokenId}
 | floatingIpId | URL | UUID | O | 플로팅 IP ID |
 | tokenId | Header | String | O | 토큰 ID |
 
+<a id="deleting-a-floating-ip-response"></a>
 #### 응답
 이 API는 응답 본문을 반환하지 않습니다.
 
