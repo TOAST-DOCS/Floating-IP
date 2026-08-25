@@ -14,7 +14,7 @@ API response may show the fields not specified by the guide. These fields are in
 
 ### View External Network ID
 You must specify the ID of an external network when creating a floating IP, because the external network assigns floating IPs.
-The available external networks can be retrieved by specifying the query `router:external=true` in the [View VPC List](/Network/VPC/zh/public-api/#vpc_1).
+The available external networks can be retrieved by specifying the query `router:external=true` in the [View VPC List](/Network/VPC/zh/public-api/#view-vpc-list).
 ```
 GET /v2.0/vpcs?router:external=true
 ```
